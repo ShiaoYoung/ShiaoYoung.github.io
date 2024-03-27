@@ -8,10 +8,10 @@
 
 # Basic Site Settings
 locale                   : "en-US"
-title                    : "Your Name / Site Title"
+title                    : "刘晓阳的主页"
 title_separator          : "-"
-name                     : &name "Your Name"
-description              : &description "personal description"
+name                     : &name "刘晓阳"
+description              : &description "很懒，还没有个人介绍。。。"
 url                      : https://shiaoyoung.github.io # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
 repository               : "shiaoyoung/shiaoyoung.github.io"
@@ -22,13 +22,13 @@ repository               : "shiaoyoung/shiaoyoung.github.io"
 author:
   # Biographic information
   avatar           : "profile.png"
-  name             : "Your Sidebar Name"
+  name             : "刘晓阳"
   pronouns         : # example: "she/her"  
   bio              : "Short biography for the left-hand sidebar"
   location         : "Earth"
   employer         : "Red Brick University"
   uri              : # URL
-  email            : "none@example.org" 
+  email            : "202200300250@mail.sdu.edu.cn" 
 
   # Academic websites
   arxiv            : # URL - Update with the correct link to your profile
