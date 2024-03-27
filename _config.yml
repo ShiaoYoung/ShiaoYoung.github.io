@@ -21,10 +21,10 @@ repository               : "shiaoyoung/shiaoyoung.github.io"
 #               Additional customization can be done by editing /_includes/author-profile.html
 author:
   # Biographic information
-  avatar           : "profile.png"
+  avatar           : "DrinkJava.jpg"
   name             : "刘晓阳"
   pronouns         : # example: "she/her"  
-  bio              : "Short biography for the left-hand sidebar"
+  bio              : "雄关漫道真如铁，而今迈步从头越"
   location         : "Earth"
   employer         : "Red Brick University"
   uri              : # URL

@@ -7,13 +7,25 @@ redirect_from:
   - /resume
 ---
 
-{% include base_path %}
+<!-- {% include base_path %} -->
 
-Education
+教育经历
 ======
-* 山东大学 软件学院 本科
+* 2022.9至今 &nbsp;&nbsp;&nbsp; 山东大学软件学院 &nbsp;&nbsp;&nbsp; 本科
+  
+专业技能
+======
+* 微信小程序开发
+* Java 开发
+  * SpringBoot
+* web前端开发
 
-Work experience
+项目经历
+======
+* Java课程设计
+* Web课程设计
+
+实习经历
 ======
 * Spring 2024: Academic Pages Collaborator
   * Github University
@@ -29,13 +41,6 @@ Work experience
   * Github University
   * Duties included: Tagging issues
   * Supervisor: Professor Git
-  
-Skills
-======
-* 微信小程序开发
-* Java 开发
-  * SpringBoot
-* web前端开发
 
 Publications
 ======
