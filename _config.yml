@@ -25,14 +25,14 @@ author:
   name             : "刘晓阳"
   pronouns         : # example: "she/her"  
   bio              : "雄关漫道真如铁，而今迈步从头越"
-  location         : "Earth"
-  employer         : "Red Brick University"
+  location         : "山东省济南市"
+  employer         : "山东大学"
   uri              : # URL
   email            : "202200300250@mail.sdu.edu.cn" 
 
   # Academic websites
   arxiv            : # URL - Update with the correct link to your profile
-  googlescholar    : "https://scholar.google.com/citations?user=PS_CX0AAAAAJ"
+  # googlescholar    : "https://scholar.google.com/citations?user=PS_CX0AAAAAJ"
   impactstory      : # URL
   orcid            : "http://orcid.org/yourorcidurl"
   pubmed           : "https://www.ncbi.nlm.nih.gov/pubmed/?term=john+snow"
