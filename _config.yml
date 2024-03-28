@@ -8,7 +8,7 @@
 
 # Basic Site Settings
 locale                   : "en-US"
-title                    : "刘晓阳的主页"
+title                    : "刘晓阳"
 title_separator          : "-"
 name                     : &name "刘晓阳"
 description              : &description "很懒，还没有个人介绍。。。"
