@@ -9,7 +9,7 @@ redirect_from:
 
 {% include base_path %}
 
-## 教育经历
+教育经历
 ======
 * 2022.9至今 &nbsp;&nbsp;&nbsp; 山东大学软件学院 &nbsp;&nbsp;&nbsp; 本科
 
