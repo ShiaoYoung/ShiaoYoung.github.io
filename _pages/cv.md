@@ -11,14 +11,17 @@ redirect_from:
 
 教育经历
 ======
+
 * 2022.9至今 &nbsp;&nbsp;&nbsp; 山东大学软件学院 &nbsp;&nbsp;&nbsp; 本科
 
 ## 相关课程
 ======
+
 * 数据结构、计算机组织与结构、算法设计与分析、数据库系统、操作系统、编译原理等
 
 ## 竞赛经历
 ======
+
 * 第十五届桥杯大赛个人赛省赛（软件赛） 省二等奖
 * 全国大学生数学竞赛 省三等奖
 * 山东大学文科实践创新大赛 优胜奖
@@ -26,6 +29,7 @@ redirect_from:
   
 ## 专业技能
 ======
+
 * 微信小程序开发
 * Java 开发
   * SpringBoot
@@ -33,11 +37,13 @@ redirect_from:
 
 ## 项目经历
 ======
+
 * Java课程设计
 * Web课程设计
 
 ## 实习经历
 ======
+
 * Spring 2024: Academic Pages Collaborator
   * Github University
   * Duties includes: Updates and improvements to template
