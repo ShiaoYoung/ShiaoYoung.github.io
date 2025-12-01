@@ -8,6 +8,6 @@ redirect_from:
   - /photo.html
 ---
 
-{% include base_path %}
+<!-- {% include base_path %} -->
 
 # 666666666666666666666666666666666666666666666666666666666666666666
