@@ -9,5 +9,5 @@ redirect_from:
 
 {% include base_path %}
 
-![Alt text](/ShiaoYoung.github.io//files//中文简历_个人主页版_00.png)
+![Alt text](../files/中文简历_个人主页版_00.png)
 
