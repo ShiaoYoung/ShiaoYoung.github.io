@@ -4,22 +4,25 @@ main:
     url: /publications/
 
   - title: "Talks"
-    url: /talks/    
+    url: /talks/
 
   - title: "Teaching"
-    url: /teaching/    
-    
+    url: /teaching/
+
   - title: "Portfolio"
     url: /portfolio/
-        
+
   - title: "Blog Posts"
     url: /year-archive/
-    
+
   - title: "简历"
     url: /cv/
-    
+
   - title: "Guide"
     url: /markdown/
+
+  - title: "工具"
+    url: /tools/
 
   - title: "摄影"
     url: /photo/
