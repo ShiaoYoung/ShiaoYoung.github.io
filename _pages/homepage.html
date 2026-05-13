@@ -1,308 +1,363 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>首页</title>
-
-    <!-- 引入Vue3 -->
+    <title>ShiaoYoung · 快捷入口</title>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-    <!-- 引入element-plus样式文件 -->
-    <link rel="stylesheet" href="https://unpkg.com/element-plus/dist/index.css" />
-    <!-- 引入element-plus组件库 -->
+    <link rel="stylesheet" href="https://unpkg.com/element-plus/dist/index.css">
     <script src="https://unpkg.com/element-plus"></script>
 </head>
 
 <body>
     <div id="app">
         <el-container class="layout-container">
-            <el-header>
-                <!-- 快捷按钮 -->
-                <el-button class="btn-up" type="primary" plain size="large"
-                    @click="toPage('http://bkzhjx.wh.sdu.edu.cn/sso.jsp')">教务系统</el-button>
-                <el-button class="btn-up" type="primary" plain size="large"
-                    @click="toPage('https://service.sdu.edu.cn/')">信息服务</el-button>
-                <el-button class="btn-up" type="primary" plain size="large"
-                    @click="toPage('https://leetcode.cn/')">力扣</el-button>
-
-
-                <el-text style="text-size-adjust: 100px; margin-left: 15px; margin-right: 15px;" size="large"
-                    @click="toPage('https://shiaoyoung.github.io')"><strong>ShiaoYoung</strong></el-text>
-
-                <!-- 快捷按钮 -->
-                <el-button class="btn-up" type="primary" plain size="large"
-                    @click="toPage('https://chat.deepseek.com/')">DeepSeek</el-button>
-                <el-button class="btn-up" type="primary" plain size="large"
-                    @click="toPage('https://www.csdn.net/')">CSDN</el-button>
-                <el-button class="btn-up" type="primary" plain size="large"
-                    @click="toPage('https://github.com/')">GitHub</el-button>
-                <!-- <el-text style="text-size-adjust: 100px;" size="large">的主页</el-text> -->
-
-
+            <el-header class="site-header">
+                <button class="brand" type="button" @click="toPage('https://shiaoyoung.github.io')">
+                    <span class="brand__mark">SY</span>
+                    <span class="brand__text">ShiaoYoung</span>
+                </button>
+                <nav class="quick-nav" aria-label="顶部快捷入口">
+                    <el-button v-for="item in pinnedLinks" :key="item.label" class="nav-button" plain
+                        @click="toPage(item.url)">
+                        {{ item.label }}
+                    </el-button>
+                </nav>
             </el-header>
-            <el-main style="text-align: center;">
-                <!-- 搜索引擎：暂时隐藏 -->
-                <!--                 <el-card class="card" style="max-width: 100%; margin-bottom: 30px;" shadow="hover">
-                    <template #header>
-                        <div class="card-header">
-                            <span>搜索引擎</span>
-                        </div>
-                    </template>
-                    <el-row>
-                        <el-col :span="24" style="text-align: center;">
-                            <el-button class="btn" type="primary" plain size="large"
-                                @click="toPage('https://www.baidu.com')">百度</el-button>
-                            <el-button class="btn" type="primary" plain size="large"
-                                @click="toPage('https://www.bing.com/')">必应</el-button>
-                            <el-button class="btn" type="primary" plain size="large"
-                                @click="toPage('https://www.google.com/')">谷歌</el-button>
-                            <el-button class="btn" type="primary" plain size="large"
-                                @click="toPage('https://chat.deepseek.com/')">DeepSeek</el-button>
-                        </el-col>
-                    </el-row>
-                </el-card> -->
-                <!-- 学校 -->
-                <el-card class="card" style="max-width: 100%; margin-bottom: 30px;" shadow="hover">
-                    <template #header>
-                        <div class="card-header">
-                            <span>学校服务</span>
-                        </div>
-                    </template>
-                    <el-row>
-                        <el-col :span="24" style="text-align: center;">
-                            <!-- 官网： -->
-                            <el-button class="btn" type="primary" plain size="large"
-                                @click="toPage('https://www.sdu.edu.cn')">山大官网</el-button>
-                            <el-button class="btn" type="primary" plain size="large"
-                                @click="toPage('https://www.sc.sdu.edu.cn/')">山大软院</el-button>
-                            <el-button class="btn" type="primary" plain size="large"
-                                @click="toPage('https://shikong.sdu.edu.cn/')">时空视点</el-button>
-                            <el-button class="btn" type="primary" plain size="large"
-                                @click="toPage('https://library.sdu.edu.cn/')">图书馆</el-button>
-                            <el-button class="btn" type="primary" plain size="large"
-                                @click="toPage('https://www.sdrj.sdu.edu.cn/')">山大日记</el-button>
-                            <br>
-                            <el-button class="btn" type="primary" plain size="large"
-                                @click="toPage('https://online.sdu.edu.cn/')">学生在线</el-button>
-                            <el-button class="btn" type="primary" plain size="large"
-                                @click="toPage('https://www.youth.sdu.edu.cn/')">青春山大</el-button>
 
-                            <!-- 教学： -->
-                            <el-button class="btn" type="primary" plain size="large"
-                                @click="toPage('https://www.bkjx.sdu.edu.cn/')">本科生院</el-button>
-                            <el-button class="btn" type="primary" plain size="large"
-                                @click="toPage('http://bkzhjx.wh.sdu.edu.cn/sso.jsp')">教务系统</el-button>
-                            <el-button class="btn" type="primary" plain size="large"
-                                @click="toPage('https://icloud.qd.sdu.edu.cn:7777/#/home')">山大云盘</el-button>
-                            <br>
-                            <!-- 其他： -->
-                            <el-button class="btn" type="primary" plain size="large"
-                                @click="toPage('https://service.sdu.edu.cn/')">信息服务</el-button>
-                            <el-button class="btn" type="primary" plain size="large"
-                                @click="toPage('http://211.86.56.236/')">学生管理系统</el-button>
-                            <el-button class="btn" type="primary" plain size="large"
-                                @click="toPage('http://pay.sdu.edu.cn/')">缴费系统</el-button>
-                            <el-button class="btn" type="primary" plain size="large"
-                                @click="toPage('http://202.194.15.87/')">校园网</el-button>
-                            <el-button class="btn" type="primary" plain size="large"
-                                @click="toPage('http://www.sd114.sdu.edu.cn:8080/web/bus/index')">交通班车</el-button>
-                            <br>
-                            <el-button class="btn" type="primary" plain size="large"
-                                @click="toPage('https://sduyjs.sdu.edu.cn/yjszs/plugins/zs/zsxsd/entrance#/entrance')">研究生招生系统</el-button>
-                            <el-button class="btn" type="primary" plain size="large"
-                                @click="toPage('https://www.tyb.sdu.edu.cn/')">体育学院</el-button>
-                            <el-button class="btn" type="primary" plain size="large"
-                                @click="toPage('https://aiassist.sdu.edu.cn/')">山大AI助手</el-button>
+            <el-main class="main-content">
+                <section class="hero" aria-labelledby="page-title">
+                    <p class="hero__eyebrow">Personal Navigation</p>
+                    <h1 id="page-title">常用网站快捷入口</h1>
+                    <p>把学习、校园服务和开发工具集中在一个清爽的页面里，减少查找成本。</p>
+                </section>
 
-
-                        </el-col>
-                    </el-row>
-                </el-card>
-                <!-- 课程：暂时隐藏 -->
-                <!--                 <el-card class="card" style="max-width: 100%; margin-bottom: 30px;" shadow="hover">
-                    <template #header>
-                        <div class="card-header">
-                            <span>课程相关</span>
-                        </div>
-                    </template>
-                    <el-row>
-                        <el-col :span="24" style="text-align: center;">
-                            <el-button class="btn" type="danger" plain size="large"
-                                @click="toPage('./htmls/homework.html')">作业</el-button>
-                            <el-button class="btn" type="primary" plain size="large"
-                                @click="toPage('./htmls/NoSQL.html')">非关系型数据库</el-button>
-                            <el-button class="btn" type="primary" plain size="large"
-                                @click="toPage('./htmls/SoftwareEngineering.html')">软件工程</el-button>
-                            <el-button class="btn" type="primary" plain size="large"
-                                @click="toPage('./htmls/数值计算.html')">数值计算</el-button>
-                            <el-button class="btn" type="primary" plain size="large"
-                                @click="toPage('./htmls/计算机网络.html')">计算机网络</el-button>
-                            <br>
-                            <a href="D:\桌面\大学\01资料整理\大三上学期.pdf"><el-button class="btn" type="danger" plain size="large">
-                                    往年经验</el-button></a>
-                            <el-button class="btn" type="primary" plain size="large"
-                                @click="toPage('./htmls/数值计算.html')">数据科学导论</el-button>
-                            <el-button class="btn" type="primary" plain size="large"
-                                @click="toPage('./htmls/编译原理.html')">编译原理</el-button>
-                            <el-button class="btn" type="primary" plain size="large"
-                                @click="toPage('./htmls/人工智能导论.html')">人工智能导论</el-button>
-                            <el-button class="btn" type="primary" plain size="large"
-                                @click="toPage('./htmls/操作系统课设.html')">操作系统课设</el-button>
-
-
-                        </el-col>
-                    </el-row>
-                </el-card> -->
-                <!-- 工具 -->
-                <el-card class="card" style="max-width: 100%; margin-bottom: 30px;" shadow="hover">
-                    <template #header>
-                        <div class="card-header">
-                            <span>工具网站</span>
-                        </div>
-                    </template>
-                    <el-row>
-                        <el-col :span="24">
-                            <el-button class="btn" type="primary" plain size="large"
-                                @click="toPage('https://www.csdn.net/')">CSDN</el-button>
-                            <el-button class="btn" type="primary" plain size="large"
-                                @click="toPage('https://github.com/')">GitHub</el-button>
-                            <el-button class="btn" type="primary" plain size="large"
-                                @click="toPage('https://element-plus.org/zh-CN/')">Element-Plus</el-button>
-                            <el-button class="btn" type="primary" plain size="large"
-                                @click="toPage('https://www.bilibili.com/')">哔哩哔哩</el-button>
-                            <el-button class="btn" type="primary" plain size="large"
-                                @click="toPage('https://www.iconfont.cn/')">阿里图标库</el-button>
-                            <br>
-                            <el-button class="btn" type="primary" plain size="large"
-                                @click="toPage('https://www.drawdb.app')">数据库设计</el-button>
-                            <el-button class="btn" type="primary" plain size="large"
-                                @click="toPage('https://leetcode.cn/')">力扣</el-button>
-                            <el-button class="btn" type="primary" plain size="large"
-                                @click="toPage('https://www.zhihu.com/')">知乎</el-button>
-                            <el-button class="btn" type="primary" plain size="large"
-                                @click="toPage('https://www.taobao.com/')">淘宝</el-button>
-                            <el-button class="btn" type="primary" plain size="large"
-                                @click="toPage('https://www.jd.com/')">京东</el-button>
-                            <br>
-                            <el-button class="btn" type="primary" plain size="large"
-                                @click="toPage('https://mtxml.oversea.cnki.net/')">中国知网</el-button>
-                            <el-button class="btn" type="primary" plain size="large"
-                                @click="toPage('https://changjiang.yuketang.cn/v2/web/index')">雨课堂</el-button>
-                            <el-button class="btn" type="primary" plain size="large"
-                                @click="toPage('http://rudangpx.sdu.edu.cn/')">线上党课</el-button>
-                            <el-button class="btn" type="primary" plain size="large"
-                                @click="toPage('https://www.chsi.com.cn/')">学信网
-                            </el-button>
-                            <el-button class="btn" type="primary" plain size="large"
-                                @click="toPage('https://gitee.com/')">Gitee
-                            </el-button>
-                        </el-col>
-                    </el-row>
-                </el-card>
+                <section class="link-section" v-for="group in linkGroups" :key="group.title"
+                    :aria-labelledby="group.id">
+                    <div class="section-heading">
+                        <h2 :id="group.id">{{ group.title }}</h2>
+                        <p>{{ group.description }}</p>
+                    </div>
+                    <div class="link-grid">
+                        <button class="link-card" type="button" v-for="link in group.links" :key="link.label"
+                            @click="toPage(link.url)">
+                            <span class="link-card__title">{{ link.label }}</span>
+                            <span class="link-card__url">{{ link.host }}</span>
+                        </button>
+                    </div>
+                </section>
             </el-main>
-            <el-footer>ShiaoYoung的首页 ©2024 Created by ShiaoYoung</el-footer>
+
+            <el-footer class="site-footer">ShiaoYoung 的首页 © 2024 Created by ShiaoYoung</el-footer>
         </el-container>
     </div>
 
     <script>
-        const { createApp, ref } = Vue;
+        const { createApp } = Vue;
 
         createApp({
             setup() {
-                const userList = ref([])
+                const pinnedLinks = [
+                    { label: '教务系统', url: 'http://bkzhjx.wh.sdu.edu.cn/sso.jsp' },
+                    { label: '信息服务', url: 'https://service.sdu.edu.cn/' },
+                    { label: '力扣', url: 'https://leetcode.cn/' },
+                    { label: 'DeepSeek', url: 'https://chat.deepseek.com/' },
+                    { label: 'CSDN', url: 'https://www.csdn.net/' },
+                    { label: 'GitHub', url: 'https://github.com/' }
+                ];
+
+                const linkGroups = [
+                    {
+                        id: 'school-services',
+                        title: '学校服务',
+                        description: '校园信息、教学系统与校内服务。',
+                        links: [
+                            { label: '山大官网', url: 'https://www.sdu.edu.cn', host: 'sdu.edu.cn' },
+                            { label: '山大软院', url: 'https://www.sc.sdu.edu.cn/', host: 'sc.sdu.edu.cn' },
+                            { label: '时空视点', url: 'https://shikong.sdu.edu.cn/', host: 'shikong.sdu.edu.cn' },
+                            { label: '图书馆', url: 'https://library.sdu.edu.cn/', host: 'library.sdu.edu.cn' },
+                            { label: '山大日记', url: 'https://www.sdrj.sdu.edu.cn/', host: 'sdrj.sdu.edu.cn' },
+                            { label: '学生在线', url: 'https://online.sdu.edu.cn/', host: 'online.sdu.edu.cn' },
+                            { label: '青春山大', url: 'https://www.youth.sdu.edu.cn/', host: 'youth.sdu.edu.cn' },
+                            { label: '本科生院', url: 'https://www.bkjx.sdu.edu.cn/', host: 'bkjx.sdu.edu.cn' },
+                            { label: '教务系统', url: 'http://bkzhjx.wh.sdu.edu.cn/sso.jsp', host: 'bkzhjx.wh.sdu.edu.cn' },
+                            { label: '山大云盘', url: 'https://icloud.qd.sdu.edu.cn:7777/#/home', host: 'icloud.qd.sdu.edu.cn' },
+                            { label: '信息服务', url: 'https://service.sdu.edu.cn/', host: 'service.sdu.edu.cn' },
+                            { label: '校园网', url: 'http://202.194.15.87/', host: '202.194.15.87' },
+                            { label: '交通班车', url: 'http://www.sd114.sdu.edu.cn:8080/web/bus/index', host: 'sd114.sdu.edu.cn' },
+                            { label: '山大AI助手', url: 'https://aiassist.sdu.edu.cn/', host: 'aiassist.sdu.edu.cn' }
+                        ]
+                    },
+                    {
+                        id: 'tool-sites',
+                        title: '工具网站',
+                        description: '开发、学习、检索和日常效率工具。',
+                        links: [
+                            { label: 'CSDN', url: 'https://www.csdn.net/', host: 'csdn.net' },
+                            { label: 'GitHub', url: 'https://github.com/', host: 'github.com' },
+                            { label: 'Element Plus', url: 'https://element-plus.org/zh-CN/', host: 'element-plus.org' },
+                            { label: '哔哩哔哩', url: 'https://www.bilibili.com/', host: 'bilibili.com' },
+                            { label: '阿里图标库', url: 'https://www.iconfont.cn/', host: 'iconfont.cn' },
+                            { label: '数据库设计', url: 'https://www.drawdb.app', host: 'drawdb.app' },
+                            { label: '力扣', url: 'https://leetcode.cn/', host: 'leetcode.cn' },
+                            { label: '知乎', url: 'https://www.zhihu.com/', host: 'zhihu.com' },
+                            { label: '中国知网', url: 'https://mtxml.oversea.cnki.net/', host: 'cnki.net' },
+                            { label: '雨课堂', url: 'https://changjiang.yuketang.cn/v2/web/index', host: 'yuketang.cn' },
+                            { label: '学信网', url: 'https://www.chsi.com.cn/', host: 'chsi.com.cn' },
+                            { label: 'Gitee', url: 'https://gitee.com/', host: 'gitee.com' }
+                        ]
+                    }
+                ];
+
+                function toPage(url) {
+                    window.open(url, '_blank', 'noopener,noreferrer');
+                }
+
                 return {
-                    userList
-                }
-            },
-            created() {
-            },
-            methods: {
-                toPage(url) {
-                    window.open(url)
-                }
+                    pinnedLinks,
+                    linkGroups,
+                    toPage
+                };
             }
-            // 全部引入ElementPlus
-        }).use(ElementPlus).mount('#app')
+        }).use(ElementPlus).mount('#app');
     </script>
 
     <style>
+        :root {
+            color: #25313d;
+            background: #eef4f7;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-width: 320px;
+        }
+
+        button {
+            font: inherit;
+        }
+
         .layout-container {
-            height: 100vh;
+            min-height: 100vh;
+            background:
+                linear-gradient(135deg, rgba(71, 156, 187, 0.16), rgba(239, 151, 72, 0.12)),
+                #f6f8fb;
+        }
+
+        .site-header {
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            display: flex;
             align-items: center;
-            text-size-adjust: 40px;
-            background: url('./back.jpg') repeat center / cover;
+            justify-content: space-between;
+            gap: 1rem;
+            height: auto;
+            min-height: 72px;
+            padding: 0.85rem clamp(1rem, 4vw, 3rem);
+            border-bottom: 1px solid rgba(80, 105, 128, 0.16);
+            background: rgba(255, 255, 255, 0.88);
+            backdrop-filter: blur(14px);
+        }
 
-            .el-header {
-                background-color: transparent;
-                /* background-color: #fff; */
-                display: flex;
-                align-items: center;
-                margin-bottom: 5px;
+        .brand {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.7rem;
+            min-width: max-content;
+            padding: 0;
+            color: #192633;
+            border: 0;
+            background: transparent;
+            cursor: pointer;
+        }
 
-                .el-text {
-                    font-size: 30px;
-                    color: black;
-                }
+        .brand__mark {
+            display: inline-grid;
+            place-items: center;
+            width: 42px;
+            height: 42px;
+            color: #fff;
+            font-weight: 800;
+            border-radius: 8px;
+            background: #2c7da0;
+        }
 
+        .brand__text {
+            font-size: 1.25rem;
+            font-weight: 800;
+        }
 
+        .quick-nav {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+            gap: 0.5rem;
+        }
 
-                /* justify-content: space-between; */
+        .nav-button.el-button {
+            margin: 0;
+            border-radius: 8px;
+            color: #245f78;
+            border-color: rgba(44, 125, 160, 0.34);
+            background: #fff;
+        }
 
-                .el-dropdown__box {
-                    display: flex;
-                    align-items: center;
+        .main-content {
+            width: min(1120px, 100%);
+            margin: 0 auto;
+            padding: clamp(1rem, 3vw, 2rem);
+        }
 
-                    &:active,
-                    &:focus {
-                        outline: none;
-                    }
-                }
+        .hero {
+            margin: 1rem 0 1.4rem;
+            padding: clamp(1.25rem, 4vw, 2.5rem);
+            color: #17212b;
+            border: 1px solid rgba(80, 105, 128, 0.14);
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.84);
+            box-shadow: 0 20px 50px rgba(32, 58, 77, 0.08);
+        }
+
+        .hero__eyebrow {
+            margin: 0 0 0.55rem;
+            color: #2c7da0;
+            font-weight: 800;
+        }
+
+        .hero h1 {
+            margin: 0 0 0.75rem;
+            font-size: clamp(2rem, 6vw, 4rem);
+            line-height: 1.08;
+        }
+
+        .hero p:last-child {
+            max-width: 760px;
+            margin: 0;
+            color: #566575;
+            font-size: 1.08rem;
+            line-height: 1.8;
+        }
+
+        .link-section {
+            margin: 1.25rem 0;
+        }
+
+        .section-heading {
+            display: flex;
+            align-items: end;
+            justify-content: space-between;
+            gap: 1rem;
+            margin-bottom: 0.85rem;
+        }
+
+        .section-heading h2 {
+            margin: 0;
+            font-size: 1.45rem;
+        }
+
+        .section-heading p {
+            margin: 0;
+            color: #697887;
+            text-align: right;
+        }
+
+        .link-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+            gap: 0.85rem;
+        }
+
+        .link-card {
+            display: flex;
+            min-height: 92px;
+            flex-direction: column;
+            justify-content: space-between;
+            gap: 0.6rem;
+            padding: 1rem;
+            text-align: left;
+            color: #22303d;
+            border: 1px solid rgba(80, 105, 128, 0.14);
+            border-radius: 8px;
+            background: #fff;
+            box-shadow: 0 12px 28px rgba(32, 58, 77, 0.06);
+            cursor: pointer;
+            transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
+        }
+
+        .link-card:hover,
+        .link-card:focus-visible {
+            border-color: rgba(44, 125, 160, 0.55);
+            box-shadow: 0 18px 36px rgba(32, 58, 77, 0.12);
+            transform: translateY(-2px);
+            outline: none;
+        }
+
+        .link-card__title {
+            font-size: 1.05rem;
+            font-weight: 800;
+        }
+
+        .link-card__url {
+            overflow: hidden;
+            color: #6b7a88;
+            font-size: 0.86rem;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .site-footer {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 56px;
+            color: #697887;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 720px) {
+            .site-header {
+                align-items: flex-start;
+                flex-direction: column;
             }
 
-            .el-main {
-                scrollbar-width: none;
+            .quick-nav {
+                justify-content: flex-start;
                 width: 100%;
             }
 
-            .el-footer {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                font-size: 14px;
-                color: #666;
+            .nav-button.el-button {
+                flex: 1 1 30%;
+                min-width: 92px;
+            }
+
+            .section-heading {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .section-heading p {
+                text-align: left;
             }
         }
 
-        .btn {
-            font-size: 20px;
-            margin-top: 30px;
-            margin-left: 20px;
-            margin-right: 20px;
-            width: 145px;
-            height: 40px;
-        }
+        @media (prefers-reduced-motion: reduce) {
+            .link-card {
+                transition: none;
+            }
 
-        .btn-up {
-            font-size: 20px;
-            margin-left: 20px;
-            margin-right: 20px;
-            margin-top: 5px;
-            width: 145px;
-            height: 40px;
-        }
-
-        .card {
-            max-width: 100%;
-            margin-bottom: 30px;
-            background-color: rgba(255, 255, 255, 0.5);
-        }
-
-        .card-header {
-            font-size: 20px;
+            .link-card:hover,
+            .link-card:focus-visible {
+                transform: none;
+            }
         }
     </style>
-
 </body>
 
 </html>
